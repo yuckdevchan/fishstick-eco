@@ -2,12 +2,12 @@
 
 circumference = float(input("enter circumference of mature oak tree in inches: "))
 
-tree_circs = {7.9:1, 19.7:5.3, 35.4:10.3, 59.1:17.5, 74.8:24.6, 98.4:37.4}
+tree_circs = {7.9: 1, 19.7 : 5.3, 35.4: 10.3, 59.1: 17.5, 74.8: 24.6, 98.4: 37.4}
 
 for item in tree_circs:
-  if item < circumference:
+  print(item)
+  if tree_circs[item] > circumference:
     print(f"using data for {item} inches circumference")
-    data_circ = item
     break
 
-print(tree_circs[data_circ])    
+print(f"\nyour tree will produce approximately: {tree_circs[item]}kg of oxygen in 1 year.")    
