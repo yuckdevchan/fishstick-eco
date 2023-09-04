@@ -1,4 +1,5 @@
 # You must use python 3.6 or later to run this program.
+import time, random
 
 class OxygenGaming():
 
@@ -17,8 +18,25 @@ class OxygenGaming():
     tree_circ_total = float(magic[1])
     amount_of_time = float(magic[2])
     oxygen_output_kg = self.get_oxygen_frfr(time_unit, tree_circ_total, amount_of_time)
-
-    print(f"Your total oxygen output for your tree is approximately: ~{oxygen_output_kg}kg.")  # 🧢 hehe
+    loading_quotes = (
+      "Crunching Numbers...",
+      "Entering the Matrix...",
+      "Cracking some nuts...",
+      "Flux Capacitor, Fluxxing...",
+      "Checking Plutonium Reserves...",
+      "Photosynthesising...",
+      "Rationalising Pythagoras..."
+    )
+    used_loading_quotes = [""]
+    for quotes in loading_quotes:
+      time.sleep(1)
+      quote = ""
+      while quote in used_loading_quotes:
+        quote = random.choice(loading_quotes)
+      print(quote)
+      used_loading_quotes.append(quote)
+    time.sleep(1)
+    print(f"\nYour total oxygen output for your tree is approximately: ~{oxygen_output_kg}kg.")  # 🧢 hehe
 
   def wizardry(self):
     time_unit = input("Do you measure your tree's circumference:\n1. Every Day\n2. Every Week\n3. Every Month\n4. Every Year\n\nInput: ")
