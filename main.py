@@ -28,6 +28,6 @@ if time_units[time_unit] is "year":
 else:
   for i in range(0, 100):
     print("YOU'RE A BROKIE!!!")
-    oxygen_output_kg = "BROKIE IS NOT A NUMBER!"
+  oxygen_output_kg = "BROKIE IS NOT A NUMBER!"
 print(f"Your total oxygen output for your tree is approximately: ~{oxygen_output_kg}kg.")
 
