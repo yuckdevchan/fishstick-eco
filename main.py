@@ -23,7 +23,7 @@ for i in range(1, int(amount_of_time) + 1):
 
   tree_circ_total = tree_circ_total + float(tree_circ)
 
-if time_units[time_unit] is "year":
+if time_units[time_unit] == "year":
   oxygen_output_kg = float(tree_circ_total) * 0.4
 else:
   for i in range(0, 100):
