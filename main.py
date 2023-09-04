@@ -35,8 +35,13 @@ class OxygenGaming():
         quote = random.choice(loading_quotes)
       print(quote)
       used_loading_quotes.append(quote)
-    time.sleep(1)
-    print(f"\nYour total oxygen output for your tree is approximately: ~{oxygen_output_kg}kg.")  # 🧢 hehe
+    for i in range(0, 3):
+      time.sleep(random.randint(5, 30) / 10)
+      print(f"... {random.randint(200, 999999) / 100}?")
+      time.sleep(0.3)
+      print("nah! that ain't right.")
+    time.sleep(0.8)
+    print(f"\nYour total oxygen output for your tree has gotta be approximately: ~{oxygen_output_kg}kg.")  # 🧢 hehe
 
   def wizardry(self):
     time_unit = input("Do you measure your tree's circumference:\n1. Every Day\n2. Every Week\n3. Every Month\n4. Every Year\n\nInput: ")
