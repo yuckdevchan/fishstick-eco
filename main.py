@@ -87,8 +87,18 @@ class OxygenGaming():
       "month": 12,
       "year": 1
     }
+    tree_number = input(f"How many trees have roughly the same values? ")
+
+    while True:
+        if tree_number.isdigit():
+            break
+        try:
+            float(tree_number)
+            break
+        except ValueError:
+            tree_number = input("Invalid Choice!\n\nTry Again: ")
     if self.time_units[time_unit] in how_many_in_year:
-      oxygen_output_kg = tree_circ_total * 0.4 / how_many_in_year[self.time_units[time_unit]] * amount_of_time
+      oxygen_output_kg = tree_circ_total * 0.4 / how_many_in_year[self.time_units[time_unit]] * amount_of_time * float(tree_number)
     else:
       for i in range(0, 100):
         print("YOU'RE A BROKIE!!!")
