@@ -1,6 +1,6 @@
 # <i><b>G</b></i>rowth <i><b>U</b></i>tilization <i><b>S</b></i>ystem for <i><b>F</b></i>orest <i><b>R</b></i>esource <i><b>I</b></i>nformation <i><b>N</b></i>etwork <i><b>G</b></i>athering
 ## "GUS FRING", for short.
-A program that can help you calculate the oxygen output of your trees!
+A program that can help you calculate the oxygen output of all your trees!
 
 ## Usage
 You can find an interactable web version, publicly available at [repl.it](https://replit.com/@yuckdevchan/fishstick-eco-final-idk-probably-fr). This is the easiest way to run the program, since repl.it sets up everything for you, and their NixOS systems are very fast compared to similar services.
