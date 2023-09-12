@@ -12,4 +12,10 @@ def tardis():
         "decades":3650
     }
     
-    handbrake = input("How much time do you let pass? e.g: '3 years', '2 days'")
+    handbrake = input("How much time do you let pass? e.g: '3 years', '2 days', '10 decades' ")
+
+def init_bruv():
+    team_trees()
+    tardis()
+
+init_bruv()
