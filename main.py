@@ -12,6 +12,16 @@ def tardis():
     }
 
     handbrake = input("How much time do you let pass? e.g: '3 years', '2 days', '10 decades' ")
+    # verify time unit is in the dictionary
+    if handbrake.split(" ")[1] not in time_units:
+        print("That's not a valid time unit!")
+        tardis()
+    # verify time amount is a float or integer
+    try:
+        int(handbrake.split(" ")[0])
+    except ValueError:
+        print("That's not a valid time amount!")
+        tardis()
     handbrake = handbrake.split(" ")
     time_unit = handbrake[1]
     time_amount = int(handbrake[0])
