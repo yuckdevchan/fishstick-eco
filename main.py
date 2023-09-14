@@ -5,7 +5,8 @@ import time
 
 
 def team_trees():
-    int(input("How many trees do you plant? "))
+    number_of_trees = int(input("How many trees do you plant? "))
+    return number_of_trees
 
 
 def tardis():
@@ -30,7 +31,11 @@ def tardis():
         handbrake = input("How much time do you let pass? e.g: "
                           "'2 days/weeks/months/years/decades/centuries/millenia': ")
         # verify time unit is in the dictionary
-        if handbrake.split(" ")[1] not in time_units:
+        try:
+            if handbrake.split(" ")[1] not in time_units:
+                print("That's not a valid time unit!")
+                continue
+        except IndexError:
             print("That's not a valid time unit!")
             continue
         # verify time amount is a float or integer
@@ -38,6 +43,7 @@ def tardis():
             int(handbrake.split(" ")[0])
         except ValueError:
             print("That's not a valid time amount!")
+            continue
         break
     handbrake = handbrake.split(" ")
     time_unit = handbrake[1]
@@ -55,14 +61,14 @@ def tardis():
 
 # find out how much the trees have grown in the time passed
 
-def let_it_grow(time_passed):
+def let_it_grow(time_passed, number_of_trees):
     # find out how much the trees have grown according to the average growth rate of a tree measured by the inches of
     # the circumference per year. That rate is 1.5 inches per year.
     # The rate from tree to tree should vary with a range of about 0.5 inches per year.
     growth_rate = 1.5 + random.uniform(-0.5, 0.5)
     growth = time_passed * growth_rate
     # determine how much oxygen in kg the trees produce in their lifetimes
-    oxygen = growth * 0.4  # number that matthew figured out (idk)
+    oxygen = growth * 0.4 * number_of_trees  # number that matthew figured out (idk)
     oxygen = oxygen / 365
     to_sender = {
         "growth": growth,
@@ -98,19 +104,85 @@ def clowning_around():
     time.sleep(0.8)
 
 
+def ascii_art_of_trees(number_of_trees):
+    trees = (
+        r"""
+              '.,
+        'b      *
+         '$    #.
+          $:   #:
+          *#  @):
+          :@,@):   ,.**:'
+,         :@@*: ..**'
+ '#o.    .:(@'.@*"'
+    'bq,..:,@@*'   ,*
+    ,p$q8,:@)'  .p*'
+   '    '@@Pp@@*'
+         Y7'.'
+        :@):.
+       .:@:'.
+     .::(@:.      
+     """,
+        r"""
+                    @
+      @ @ @  @ @ @
+    @  @\/@ @ /__@
+    @@@ @\ / @/  @ @
+   @\  \/@| @ | @
+  @__\@ \ |/ \| / @
+     __\|@|  ||/__/@
+    /  \ \\  / /__
+   @    \  \/ /   @
+         |" '|
+         |"  |
+         |"  |
+        ~|"  |~
+    ~~~~       ~~~~
+  ~~               ~~~""",
+        r"""
+           %%%,%%%%%%%
+       ,'%% \\-*%%%%%%%
+ ;%%%%%*%   _%%%%"
+  ,%%%       \(_.*%%%%.
+  % *%%, ,%%%%*(    '
+%^     ,*%%% )\|,%%*%,_
+     *%    \/ #).-"*%%*
+         _.) ,/ *%,
+ _________/)#(_____________
+ """,
+        r"""
+       _-_
+    /~~   ~~\
+ /~~         ~~\
+{               }
+ \  _-     -_  /
+   ~  \\ //  ~
+_- -   | | _- _
+  _ -  | |   -_
+      // \\"""
+    )
+
+    for _ in range(number_of_trees):
+        print(random.choice(trees))
+        print()
+
+
 def init_():
-    team_trees()
-    time_passed_human = tardis()["time_passed_human"]
-    time_passed = tardis()["time_passed"]
-    time_unit = tardis()["time_unit"]
-    growth = round(let_it_grow(time_passed)["growth"], 2)  # do a bit of rounding
-    oxygen = round(let_it_grow(time_passed)["oxygen"], 2)  # do a bit more rounding
+    number_of_trees = team_trees()
+    answers = tardis()
+    time_passed_human = answers["time_passed_human"]
+    time_passed = answers["time_passed"]
+    time_unit = answers["time_unit"]
+    ligma = let_it_grow(time_passed, number_of_trees)
+    growth = round(ligma["growth"], 2)  # do a bit of rounding
+    oxygen = round(ligma["oxygen"], 2)  # do a bit more rounding
     # add necessary commas to number
     growth = "{:,}".format(growth)
     oxygen = "{:,}".format(oxygen)
     time_passed = "{:,}".format(time_passed)
     # see if time_passed is plural or not and add an s if it is
     clowning_around()
+    ascii_art_of_trees(number_of_trees)
     print(f"The trees have grown {growth} inches collectively and produced {oxygen}kg of oxygen collectively in"
           f" the {time_passed} {time_unit} since you last saw them! How time flies by! (smh)")
 
