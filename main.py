@@ -56,6 +56,7 @@ def let_it_grow(time_passed):
     growth = time_passed * growth_rate
     # determine how much oxygen in kg the trees produce in their lifetimes
     oxygen = growth * 0.4  # number that matthew figured out (idk)
+    oxygen = oxygen / 365
     to_sender = {
         "growth": growth,
         "oxygen": oxygen
