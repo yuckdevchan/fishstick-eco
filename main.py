@@ -26,6 +26,7 @@ def tardis():
     time_unit = handbrake[1]
     time_amount = int(handbrake[0])
     time_passed = time_units[time_unit] * time_amount  # find time passed in days
+    return time_passed
 
 
 def init_():
