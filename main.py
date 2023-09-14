@@ -1,4 +1,4 @@
-import random, sleep
+import random, time
 
 def team_trees():
     int(input("How many trees do you plant? "))
