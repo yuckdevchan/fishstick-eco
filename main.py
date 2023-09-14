@@ -43,7 +43,14 @@ def tardis():
     time_unit = handbrake[1]
     time_amount = int(handbrake[0])
     time_passed = time_units[time_unit] * time_amount  # find time passed in days
-    return time_passed
+    time_passed_human = f"{time_amount} {time_unit}"
+    mr_fusion = {
+        "time_passed": time_passed,
+        "time_passed_human": time_passed_human,
+        "time_unit": time_unit,
+        "time_amount": time_amount
+    }
+    return mr_fusion
 
 
 # find out how much the trees have grown in the time passed
@@ -93,16 +100,19 @@ def clowning_around():
 
 def init_():
     team_trees()
-    time_passed = tardis()
+    time_passed_human = tardis()["time_passed_human"]
+    time_passed = tardis()["time_passed"]
+    time_unit = tardis()["time_unit"]
     growth = round(let_it_grow(time_passed)["growth"], 2)  # do a bit of rounding
     oxygen = round(let_it_grow(time_passed)["oxygen"], 2)  # do a bit more rounding
     # add necessary commas to number
     growth = "{:,}".format(growth)
     oxygen = "{:,}".format(oxygen)
     time_passed = "{:,}".format(time_passed)
+    # see if time_passed is plural or not and add an s if it is
     clowning_around()
     print(f"The trees have grown {growth} inches collectively and produced {oxygen}kg of oxygen collectively in"
-          f"{time_passed} days since you last saw them! How time flies by! (smh)")
+          f" the {time_passed} {time_unit} since you last saw them! How time flies by! (smh)")
 
 
 init_()
